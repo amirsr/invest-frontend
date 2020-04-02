@@ -1,0 +1,9 @@
+<p-card [style]="{width: '27%',float:'right'}" header="Selected instruments" styleClass="ui-card-shadow ff">
+    
+            <li *ngFor="let instrument of this.selectedDataManager.selectedInstruments" style="text-align: left">
+                {{instrument.instrumentId + ' - ' + instrument.name + ' - ' + instrument.symbol}}
+            </li>
+<p-footer *ngIf='this.userDataService.isUserLogged'>
+    <button *ngIf='this.userDataService.allData && this.selectedDataManager.selectedInstruments.length != 0' pButton type="button" label="Add" class="ui-button-rounded" (click)="addInstruments()"></button>
+    <button *ngIf='!this.userDataService.allData && this.selectedDataManager.selectedInstruments.length != 0' pButton type="button" label="Remove" class="ui-button-rounded" (click)="removeInstruments()"></button>    
+</p-footer>

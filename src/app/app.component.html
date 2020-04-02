@@ -1,0 +1,5 @@
+<app-user-data (changeToMyPortfolioEvent)="showPortfolio()" (changeToAllDataEvent)="showAllData()"></app-user-data>
+<app-selected-data (removedInstrumentsEvent)="removedInstrument()" (addInstrumentsEvent)="addedInstrument()"></app-selected-data>
+<div class="table">
+    <app-table [instruments] = "instrumentsToShow"></app-table>
+</div>

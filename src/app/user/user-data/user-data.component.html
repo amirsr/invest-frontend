@@ -1,0 +1,24 @@
+<p-card *ngIf="!userDataService.isUserLogged" [style]="{width: '22%',float:'left'}" header="Hello, visitor." styleClass="ui-card-shadow ff">
+    <div> please log-in or sign-up.</div>
+<p-footer *ngIf="(!loginFormOpened) && (!signUpFormOpened)">
+    <button  pButton type="button" label="Log-in" class="ui-button-rounded" (click)="openLogin()"></button>
+    <button  pButton type="button" label="Sign-up" class="ui-button-rounded" (click)="openSignUp()"></button>    
+</p-footer>
+<p-footer *ngIf="(loginFormOpened) || (signUpFormOpened)">
+    <input type="text" pInputText [(ngModel)]="userName"/>
+    <div>
+    <button  *ngIf="(signUpFormOpened)" pButton type="button" label="Sign-up" (click)="signUp()" class="ui-button-rounded"></button>   
+    <button  *ngIf="(loginFormOpened)" pButton type="button" label="Log-in" (click)="logIn()" class="ui-button-rounded"></button>     
+    <button  label="Cancel" pButton type="button" class="ui-button-rounded" iconPos="left" (click)="cancel()"></button>
+</div>
+</p-footer>
+</p-card>
+
+<p-card *ngIf="this.userDataService.isUserLogged" [style]="{width: '22%',float:'left'}" header="Hello, {{userDataService.user.userName}}." styleClass="ui-card-shadow">
+    <div> What do you want to do?</div>
+<p-footer>
+    <button pButton type="button" label="Log-out" class="ui-button-rounded" (click)="logout()"></button>  
+    <button *ngIf="this.userDataService.allData" pButton type="button" (click)="changeToMyPortfolio()" label="My Portfolio" class="ui-button-rounded"></button>
+    <button *ngIf="!this.userDataService.allData" pButton type="button" (click)="changeToAllData()" label="All Data" class="ui-button-rounded"></button>  
+</p-footer>
+</p-card>
